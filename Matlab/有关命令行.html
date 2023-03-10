@@ -1,0 +1,1375 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Matlab命令 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../ROS/env.html" />
+    
+    
+    <link rel="prev" href="Matlab介绍.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    欢迎页
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" >
+            
+                <a target="_blank" href="https://gitee.com/shenbit/fcc_notes/commits/master">
+            
+                    
+                    更新详情
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Linux教程</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../Linux_basic/os.html">
+            
+                <a href="../Linux_basic/os.html">
+            
+                    
+                    os
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../Linux_basic/Linux内核及其发行版.html">
+            
+                <a href="../Linux_basic/Linux内核及其发行版.html">
+            
+                    
+                    Linux内核及其发行版
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../Linux_basic/Linux文件系统.html">
+            
+                <a href="../Linux_basic/Linux文件系统.html">
+            
+                    
+                    Linux文件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../Linux_basic/terminal.html">
+            
+                <a href="../Linux_basic/terminal.html">
+            
+                    
+                    terminal
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../Linux_basic/sys_info.html">
+            
+                <a href="../Linux_basic/sys_info.html">
+            
+                    
+                    sys_info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="../Linux_basic/access.html">
+            
+                <a href="../Linux_basic/access.html">
+            
+                    
+                    access
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../Linux_basic/su.html">
+            
+                <a href="../Linux_basic/su.html">
+            
+                    
+                    su
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../Linux_basic/etc_passwd.html">
+            
+                <a href="../Linux_basic/etc_passwd.html">
+            
+                    
+                    etc_passwd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../Linux_basic/ssh.html">
+            
+                <a href="../Linux_basic/ssh.html">
+            
+                    
+                    ssh
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../Linux_basic/tar_zip.html">
+            
+                <a href="../Linux_basic/tar_zip.html">
+            
+                    
+                    tar_zip
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.11" data-path="../Linux_basic/which.html">
+            
+                <a href="../Linux_basic/which.html">
+            
+                    
+                    which
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.12" data-path="../Linux_basic/others_cmd.html">
+            
+                <a href="../Linux_basic/others_cmd.html">
+            
+                    
+                    others_cmd
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.13" data-path="../Linux_basic/通配符.html">
+            
+                <a href="../Linux_basic/通配符.html">
+            
+                    
+                    通配符
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">git用法</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../How-to-use-git/介绍.html">
+            
+                <a href="../How-to-use-git/介绍.html">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../How-to-use-git/功能.html">
+            
+                <a href="../How-to-use-git/功能.html">
+            
+                    
+                    功能
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../How-to-use-git/高级功能-branch.html">
+            
+                <a href="../How-to-use-git/高级功能-branch.html">
+            
+                    
+                    高级功能-branch
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">python教程</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../py/撸码习惯.html">
+            
+                <a href="../py/撸码习惯.html">
+            
+                    
+                    撸码习惯
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../py/tools.html">
+            
+                <a href="../py/tools.html">
+            
+                    
+                    实用工具
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../py/变量.html">
+            
+                <a href="../py/变量.html">
+            
+                    
+                    变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../py/高级公共方法.html">
+            
+                <a href="../py/高级公共方法.html">
+            
+                    
+                    高级数据类型公共方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.5" data-path="../py/operator.html">
+            
+                <a href="../py/operator.html">
+            
+                    
+                    运算符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.6" data-path="../py/流程控制.html">
+            
+                <a href="../py/流程控制.html">
+            
+                    
+                    流程控制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.7" data-path="../py/函数.html">
+            
+                <a href="../py/函数.html">
+            
+                    
+                    函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.8" data-path="../py/package_list/模块.html">
+            
+                <a href="../py/package_list/模块.html">
+            
+                    
+                    模块和包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.9" data-path="../py/class.html">
+            
+                <a href="../py/class.html">
+            
+                    
+                    面对对象基本概念
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.10" data-path="../py/class_grammar.html">
+            
+                <a href="../py/class_grammar.html">
+            
+                    
+                    面对对象基本语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.11" data-path="../py/class_structure.html">
+            
+                <a href="../py/class_structure.html">
+            
+                    
+                    类的结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.12" data-path="../py/deisgn_mode.html">
+            
+                <a href="../py/deisgn_mode.html">
+            
+                    
+                    设计模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.13" data-path="../py/error_rise.html">
+            
+                <a href="../py/error_rise.html">
+            
+                    
+                    异常
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.14" data-path="../py/file_operate.html">
+            
+                <a href="../py/file_operate.html">
+            
+                    
+                    文件操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">C++教程</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../cpp/vscode_setting.html">
+            
+                <a href="../cpp/vscode_setting.html">
+            
+                    
+                    vscde环境配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.2" data-path="../cpp/first_cppfile.html">
+            
+                <a href="../cpp/first_cppfile.html">
+            
+                    
+                    第一个.CPP文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.3" data-path="../cpp/数据类型.html">
+            
+                <a href="../cpp/数据类型.html">
+            
+                    
+                    数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.4" data-path="../cpp/常量.html">
+            
+                <a href="../cpp/常量.html">
+            
+                    
+                    常量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.5" data-path="../cpp/变量.html">
+            
+                <a href="../cpp/变量.html">
+            
+                    
+                    变量
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.6" data-path="../cpp/struct.html">
+            
+                <a href="../cpp/struct.html">
+            
+                    
+                    结构体
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.7" data-path="../cpp/运算符.html">
+            
+                <a href="../cpp/运算符.html">
+            
+                    
+                    运算符和表达式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.8" data-path="../cpp/面向过程的程序设计.html">
+            
+                <a href="../cpp/面向过程的程序设计.html">
+            
+                    
+                    面向过程的C++程序设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.9" data-path="../cpp/面向对象的程序设计.html">
+            
+                <a href="../cpp/面向对象的程序设计.html">
+            
+                    
+                    面向对象的C++程序设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.10" data-path="../cpp/数组.html">
+            
+                <a href="../cpp/数组.html">
+            
+                    
+                    数组的使用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.11" data-path="../cpp/指针.html">
+            
+                <a href="../cpp/指针.html">
+            
+                    
+                    指针
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.12" data-path="../cpp/引用.html">
+            
+                <a href="../cpp/引用.html">
+            
+                    
+                    引用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.13" data-path="../cpp/namespace.html">
+            
+                <a href="../cpp/namespace.html">
+            
+                    
+                    命名空间
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Markdown教程</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../mk.html">
+            
+                <a href="../mk.html">
+            
+                    
+                    基本语法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">YOLO目标检测</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../YOLOv3/介绍.html">
+            
+                <a href="../YOLOv3/介绍.html">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="7.2" data-path="../YOLOv3/detec_item.html">
+            
+                <a href="../YOLOv3/detec_item.html">
+            
+                    
+                    目标检测
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">openMV目标检测</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../openmv/talkabout.html">
+            
+                <a href="../openmv/talkabout.html">
+            
+                    
+                    简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../openmv/config.html">
+            
+                <a href="../openmv/config.html">
+            
+                    
+                    感光元件配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">雷达</li>
+        
+        
+    
+        <li class="chapter " data-level="9.1" data-path="../rslidar/rs_lidar.html">
+            
+                <a href="../rslidar/rs_lidar.html">
+            
+                    
+                    雷达的使用方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Point Cloud Lib</li>
+        
+        
+    
+        <li class="chapter " data-level="10.1" data-path="../pcl/env_setup.html">
+            
+                <a href="../pcl/env_setup.html">
+            
+                    
+                    environment setup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="10.2" data-path="../pcl/filter_readme.html">
+            
+                <a href="../pcl/filter_readme.html">
+            
+                    
+                    filter note
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Matlab</li>
+        
+        
+    
+        <li class="chapter " data-level="11.1" data-path="Matlab介绍.html">
+            
+                <a href="Matlab介绍.html">
+            
+                    
+                    Matlab介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="11.2" data-path="有关命令行.html">
+            
+                <a href="有关命令行.html">
+            
+                    
+                    Matlab命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">ROS</li>
+        
+        
+    
+        <li class="chapter " data-level="12.1" data-path="../ROS/env.html">
+            
+                <a href="../ROS/env.html">
+            
+                    
+                    环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.2" data-path="../ROS/file_sys.html">
+            
+                <a href="../ROS/file_sys.html">
+            
+                    
+                    ROS工作区的文件系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.3" data-path="../ROS/command.html">
+            
+                <a href="../ROS/command.html">
+            
+                    
+                    ROS相关命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.4" data-path="../ROS/rqt_graph.html">
+            
+                <a href="../ROS/rqt_graph.html">
+            
+                    
+                    rqt_graph
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.5" data-path="../ROS/massage.html">
+            
+                <a href="../ROS/massage.html">
+            
+                    
+                    ROS通信机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.6" data-path="../ROS/personialize_msg.html">
+            
+                <a href="../ROS/personialize_msg.html">
+            
+                    
+                    自定义Message
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="12.7" data-path="../ros_template_generator/useage.html">
+            
+                <a href="../ros_template_generator/useage.html">
+            
+                    
+                    ros_template_generator
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">hack-in-guidance</li>
+        
+        
+    
+        <li class="chapter " data-level="13.1" data-path="../hacking/简介.html">
+            
+                <a href="../hacking/简介.html">
+            
+                    
+                    这个系列的介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.2" data-path="../hacking/arping.html">
+            
+                <a href="../hacking/arping.html">
+            
+                    
+                    Arping
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.3" data-path="../hacking/hping.html">
+            
+                <a href="../hacking/hping.html">
+            
+                    
+                    hping3
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.4" data-path="../hacking/nslookup.html">
+            
+                <a href="../hacking/nslookup.html">
+            
+                    
+                    nslookup
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.5" data-path="../hacking/dnsenum.html">
+            
+                <a href="../hacking/dnsenum.html">
+            
+                    
+                    dnsenum
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.6" data-path="../hacking/dnsmap.html">
+            
+                <a href="../hacking/dnsmap.html">
+            
+                    
+                    dnsmap
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.7" data-path="../hacking/DMitry.html">
+            
+                <a href="../hacking/DMitry.html">
+            
+                    
+                    DMitry
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.8" data-path="../hacking/portscan.html">
+            
+                <a href="../hacking/portscan.html">
+            
+                    
+                    portScan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.9" data-path="../hacking/smbscan.html">
+            
+                <a href="../hacking/smbscan.html">
+            
+                    
+                    SMBScan
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="13.10" data-path="../hacking/sv.html">
+            
+                <a href="../hacking/sv.html">
+            
+                    
+                    Service_version
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">网络操作</li>
+        
+        
+    
+        <li class="chapter " data-level="14.1" data-path="../network/cisco.html">
+            
+                <a href="../network/cisco.html">
+            
+                    
+                    Cisco网络设备维护操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Matlab命令</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="matlab&#x7684;&#x547D;&#x4EE4;&#x884C;">Matlab&#x7684;&#x547D;&#x4EE4;&#x884C;</h1>
+<p>&#x8BDD;&#x4E0D;&#x591A;&#x8BF4;, &#x76F4;&#x63A5;&#x5217;&#x8868;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x547D;&#x4EE4;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">clc</td>
+<td style="text-align:left">&#x6E05;&#x5C4F;</td>
+</tr>
+<tr>
+<td style="text-align:center">clf</td>
+<td style="text-align:left">&#x6E05;&#x9664;&#x56FE;&#x5F62;&#x5BF9;&#x8C61;</td>
+</tr>
+<tr>
+<td style="text-align:center">clear</td>
+<td style="text-align:left">&#x6E05;&#x9664;&#x6240;&#x6709;&#x53D8;&#x91CF;, &#x91CA;&#x653E;&#x5185;&#x5B58;</td>
+</tr>
+<tr>
+<td style="text-align:center">clear all</td>
+<td style="text-align:left">&#x6E05;&#x6389;&#x6240;&#x6709;&#x51FD;&#x6570;&#x548C;&#x53D8;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:center">who</td>
+<td style="text-align:left">&#x5217;&#x51FA;&#x53D8;&#x91CF;&#x540D;</td>
+</tr>
+<tr>
+<td style="text-align:center">whos</td>
+<td style="text-align:left">&#x5217;&#x51FA;&#x53D8;&#x91CF;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;</td>
+</tr>
+<tr>
+<td style="text-align:center">what</td>
+<td style="text-align:left">&#x5217;&#x51FA;<code>.m</code>&#x548C;<code>.mat</code>&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:center">delete</td>
+<td style="text-align:left">&#x5220;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:center">dir</td>
+<td style="text-align:left">==ls</td>
+</tr>
+<tr>
+<td style="text-align:center">save</td>
+<td style="text-align:left">&#x4FDD;&#x5B58;<code>&#x5DE5;&#x4F5C;&#x533A;</code>&#x6216;&#x4EFB;&#x4F55;<code>&#x6307;&#x5B9A;&#x6587;&#x4EF6;</code>(.mat)</td>
+</tr>
+<tr>
+<td style="text-align:center">load</td>
+<td style="text-align:left">&#x52A0;&#x8F7D;.mat</td>
+</tr>
+<tr>
+<td style="text-align:center">quit/exit</td>
+<td style="text-align:left">&#x9000;&#x51FA;</td>
+</tr>
+<tr>
+<td style="text-align:center">close</td>
+<td style="text-align:left">&#x5173;&#x95ED;&#x6307;&#x5B9A;&#x7A97;&#x53E3;</td>
+</tr>
+<tr>
+<td style="text-align:center">which</td>
+<td style="text-align:left">&#x67E5;&#x627E;&#x6587;&#x4EF6;</td>
+</tr>
+<tr>
+<td style="text-align:center">path</td>
+<td style="text-align:left">&#x542F;&#x52A8;&#x8DEF;&#x5F84;&#x641C;&#x7D22;</td>
+</tr>
+<tr>
+<td style="text-align:center">%</td>
+<td style="text-align:left">&#x6CE8;&#x91CA;</td>
+</tr>
+<tr>
+<td style="text-align:center">help</td>
+<td style="text-align:left">&#x5E2E;&#x52A9;&#x4FE1;&#x606F;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x7EC4;&#x5408;&#x952E;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x6309;&#x952E;&#x548C;</th>
+<th style="text-align:left">&#x4F5C;&#x7528;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Ctrl+z</td>
+<td style="text-align:left">&#x4E0A;&#x4E00;&#x6761;&#x547D;&#x4EE4;</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+c</td>
+<td style="text-align:left">&#x7EC8;&#x6B62;&#x5F53;&#x524D;</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+e</td>
+<td style="text-align:left">&#x5149;&#x6807;&#x79FB;&#x52A8;&#x81F3;&#x884C;&#x5C3E;</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+b</td>
+<td style="text-align:left">&#x5149;&#x6807;&#x524D;&#x79FB;</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+k</td>
+<td style="text-align:left">&#x5220;&#x9664;&#x5230;&#x884C;&#x5C3E;</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+u</td>
+<td style="text-align:left">&#x6E05;&#x9664;&#x672C;&#x884C;</td>
+</tr>
+<tr>
+<td style="text-align:center">Ctrl+q</td>
+<td style="text-align:left">&#x5F3A;&#x5236;&#x9000;&#x51FA;&#x7CFB;&#x7EDF;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Matlab介绍.html" class="navigation navigation-prev " aria-label="Previous page: Matlab介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../ROS/env.html" class="navigation navigation-next " aria-label="Next page: 环境搭建">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Matlab命令","level":"11.2","depth":1,"next":{"title":"环境搭建","level":"12.1","depth":1,"path":"ROS/env.md","ref":"ROS/env.md","articles":[]},"previous":{"title":"Matlab介绍","level":"11.1","depth":1,"path":"Matlab/Matlab介绍.md","ref":"Matlab/Matlab介绍.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"Matlab/有关命令行.md","mtime":"2022-03-09T13:39:38.236Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2023-03-10T12:09:09.491Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
