@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Python类 |  TEST</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="./image/dog.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-fcc_notes/py/class_grammar"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Python类
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/01/fcc_notes/py/class_grammar/" class="article-date">
+  <time datetime="2024-01-31T16:00:00.000Z" itemprop="datePublished">2024-02-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Python/">Python</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="类的语法"><a href="#类的语法" class="headerlink" title="类的语法"></a>类的语法</h1><h2 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h2><p>python中有很多内置类, 在<code>import</code>之后可以直接进行调用</p>
+<p>调用语法: <code>类名.方法名(实参)</code></p>
+<ul>
+<li><p>查看对象的方法</p>
+<p>  在我们之前学过的<code>函数, 类, 变量</code>都是对象</p>
+<p>  想要查看某个对象的所有方法</p>
+<p>  可以利用dir函数</p>
+<p>  dir(标识符&#x2F;关键字)</p>
+<p>  其输出就是以<code>__</code>框起的<em>内置</em>方法或者<em>属性</em>名称</p>
+<p>  比如:</p>
+<p>  <code>__new__</code>       创建对象时会自动调用(一般不用)</p>
+<p>  <code>__init__</code>      对象初始化时自动调用(用于定义属性)</p>
+<p>  <code>__del__</code>       调用后变量被销毁(用于释放内存空间)</p>
+<p>  <code>__str__</code>       返回对象描述信息(<code>print(item.__str__)</code>)</p>
+</li>
+</ul>
+<h3 id="对象的生命周期"><a href="#对象的生命周期" class="headerlink" title="对象的生命周期"></a>对象的生命周期</h3><p>对象还存在时，可以对变量的属性，方法进行访问</p>
+<p>调用<code>__del__</code>方法后，会先执行自己定义的方法语句，然后将实例化的变量将从内存中删除</p>
+<p>未经定义的<code>__del__</code>方法会直接删除对象</p>
+<p>删除后对象就不复存在，无法访问</p>
+<hr>
+<h2 id="定义一个简单类-只含普通方法"><a href="#定义一个简单类-只含普通方法" class="headerlink" title="定义一个简单类(只含普通方法)"></a>定义一个简单类(只含普通方法)</h2><p>语法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ClassName</span>:</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">function_name_1</span>(<span class="params">self,[args]</span>):  <span class="comment">#第一个参数必须是self(其代表了自身对象)</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">function_name_1</span>(<span class="params">self,[args]</span>):</span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>调用时需要将类实例化</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">item_name = ClassName()</span><br><span class="line">item_name.functiong([args])</span><br></pre></td></tr></table></figure>
+
+<p>程序员在调用方法时不需要对<code>self</code>进行声明</p>
+<p>而在类的<strong>内部</strong>对该类的<strong>其他</strong>方法或属性进行调用的时候就需要用到<code>self</code></p>
+<h3 id="给对象增加类外属性"><a href="#给对象增加类外属性" class="headerlink" title="给对象增加类外属性"></a>给对象增加类外属性</h3><p><code>item_name.attribute_name = &quot;data&quot;</code></p>
+<p>这是一种可以但不推荐的方法, 因为属性应该被封装在<code>类</code>的内部, 属性在外部时, 可能会因为解释器执行问题而报错</p>
+<h3 id="给类增加类内属性"><a href="#给类增加类内属性" class="headerlink" title="给类增加类内属性"></a>给类增加类内属性</h3><p>增加类属性就不得不提到一个方法：<code>__init__</code>也是一个内置方法</p>
+<p>众所周知，init代表initialize, 初始化，而在python中，初始化函数就是专门用来定义类中的属性的方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AGuy</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self,name,age</span>):</span><br><span class="line">        self.name = name</span><br><span class="line">        self.age = age</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;正在初始化 %s&quot;</span> %(self.name))</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">P</span>(<span class="params">self</span>):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;我的名字是 %s&quot;</span> %(self.name))</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;年龄: %d&quot;</span>%(self.age))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">tim = AGuy(name=<span class="string">&quot;Tim&quot;</span>,age=<span class="number">18</span>)</span><br><span class="line">tim.P()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">正在初始化 Tim</span><br><span class="line">我的名字是 Tim</span><br><span class="line">年龄: 18</span><br></pre></td></tr></table></figure>
+
+<p>可以看出，有了init方法的类在实例化的时候就需要对类中的形参进行赋值了（否则报错）</p>
+<p>而且init方法内的语句会在实例化的时候自动执行</p>
+<p><em>属性可以看作是类内的全局变量，类方法之间想要交换数据，就必须通过属性，普通的变量定义是不能跨方法读取的</em>*</p>
+<h3 id="对象的描述"><a href="#对象的描述" class="headerlink" title="对象的描述"></a>对象的描述</h3><p>确切的讲是类的描述</p>
+<p>用到<code>__str__</code>方法</p>
+<p>未经定义的str方法会<code>return</code>一个字符串值：<code>&lt;method-wrapper &#39;__str__&#39; of 类名 object at 16进制内存地址&gt;</code></p>
+<p>定义后会执行你自己的定义语句，但一定要有一个<code>return</code>的字符串</p>
+<h3 id="对象私有属性和方法"><a href="#对象私有属性和方法" class="headerlink" title="对象私有属性和方法"></a>对象私有属性和方法</h3><p>想要定义一个对象的私有属性和方法很简单, 在想要定义的属性名和方法名之前添加<code>__</code></p>
+<p><strong>私有概念: 仅仅该<code>对象个人</code>能够访问, 其他对象不予访问权限</strong></p>
+<h2 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h2><p>面向对象有三大特性: 封装, 继承, 多态</p>
+<p>建立一个对象是继承的话, 从另一个对象获得该对象的能力, 就是继承</p>
+<p>开始继承操作后, 根据继承的方向将被继承方和继承方, 被继承方叫<code>父类</code>, 继承方叫<code>子类</code>(<strong>子类</strong>又可称为<strong>派生类</strong>, <strong>父类</strong>又可称为<strong>基类</strong>)</p>
+<p>继承后: 子类将拥有父类的<strong>全部方法和属性</strong></p>
+<p>语法:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 继承在定义类时开始</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SonClass</span>(FatherClass1,FatherClass2):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>一个子类可以同时继承多个父类</p>
+<p>  <strong>注意: 在父类之间有<code>相同方法名或者属性名</code>时要避免使用多继承(易产生混淆)</strong></p>
+</li>
+</ul>
+<p>注意：如果一个类的父类不全是<code>object</code>，在重写<code>__init__</code>的时候要先<code>super()</code>一下父类<code>__init__</code>确保能正常执行</p>
+<h3 id="改写"><a href="#改写" class="headerlink" title="改写"></a>改写</h3><p>当然, 继承后也有可能父类方法无法满足子类的方法</p>
+<p>这时候, 为了更新或者更改子类的方法, 我们需要在子类中对父类方法进行<strong>重写</strong></p>
+<p>如何重写, 其实很简单</p>
+<p>只需要把功能不适用的方法重新写一遍即可, 这样子类在引用的时候就不会引用父类的方法, 而是会直接利用自身的重写方法对父类进行覆盖(这对父类不会造成任何影响, 仅仅会更改子类)</p>
+<p>若想在重写后还重新调用父类的方法</p>
+<p>利用<code>super().父类方法</code>的格式来调用原本的父类方法</p>
+<h3 id="私有方法的继承"><a href="#私有方法的继承" class="headerlink" title="私有方法的继承"></a>私有方法的继承</h3><p>记不记得私有方法的定义: 只能被该对象所访问</p>
+<p>所以, 继承后的子类是不能直接访问父类的私有属性和私有方法</p>
+<p><em><strong>但是, 可以通过父类的<code>公共方法</code>来间接访问其私有属性和类</strong></em></p>
+<hr>
+<h2 id="方法执行顺寻"><a href="#方法执行顺寻" class="headerlink" title="方法执行顺寻"></a>方法执行顺寻</h2><p>在python中, 类有个方法叫, <code>__mro__</code>方法, 这个方法的输出是一个元组</p>
+<p>里面是类的搜索序列, 按照先后顺序, 找到即执行</p>
+<p>如:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#上方省略数行代码</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SonClass</span>(FatherClass2,FatherClass1):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">son = SonClass()</span><br><span class="line">son.__mro__()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#返回值</span></span><br><span class="line">(&lt;<span class="keyword">class</span> <span class="string">&#x27;__mian__.SonClass&#x27;</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">&#x27;__mian__.FatherClass2&#x27;</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">&#x27;__mian__.FatherClass1&#x27;</span>&gt;, &lt;<span class="keyword">class</span> <span class="string">&#x27;object&#x27;</span>&gt;)</span><br></pre></td></tr></table></figure>
+
+<p>可以看出, 搜索顺序是: 自类 -&gt; 父类元组[0] -&gt; 父类元组[1] -&gt; 主基类object</p>
+<hr>
+<h2 id="新式类-经典类"><a href="#新式类-经典类" class="headerlink" title="新式类 &amp; 经典类"></a>新式类 &amp; 经典类</h2><p>python3中直接创建类, 会自动继承<code>object</code>类 -&gt; 新式类</p>
+<p>python2中直接创建类, 啥都不会继承 -&gt; 经典类</p>
+<p>这会影响到多继承的方法搜索顺序</p>
+<p>如果想向下兼容程序</p>
+<p>就记得在创建类时手动继承<code>object</code>类</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">NewClass</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">    <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态 多个子类对象调用一个父类对象而产生不同的执行效果</p>
+<ul>
+<li>多态可以增加代码的灵活度</li>
+<li>以继承和重写父方法为前提</li>
+<li>是调用方法的技巧, 不会影响类的内部设计</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cdog-shen.github.io/2024/02/01/fcc_notes/py/class_grammar/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Languages/" rel="tag">Languages</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/02/01/fcc_notes/py/class/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            Pytho面向对象
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/02/01/fcc_notes/py/class_structure/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Python类结构</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Cdog Shen
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="./images/dog.ico" alt="TEST"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/project">项目</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1329665666&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

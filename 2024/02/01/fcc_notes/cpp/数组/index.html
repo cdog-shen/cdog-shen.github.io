@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>C---数组 |  TEST</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="./image/dog.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-fcc_notes/cpp/数组"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C---数组
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/01/fcc_notes/cpp/%E6%95%B0%E7%BB%84/" class="article-date">
+  <time datetime="2024-01-31T16:00:00.000Z" itemprop="datePublished">2024-02-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-CPP/">C/CPP</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="利用数组来批量处理数据"><a href="#利用数组来批量处理数据" class="headerlink" title="利用数组来批量处理数据"></a>利用数组来批量处理数据</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><p>如果大量数据具有相同属性并且具有内在联系, 就没必要分别给他们分配变量, 利用一个数组就可以储存所有的数据</p>
+<p>数组就是用一个统一的名字代表这批数据, 用<code>序号</code>和<code>下标</code>来区分各个数据, 数组中的数据被称为<code>数组元素</code></p>
+<h2 id="定义和引用-一维数组"><a href="#定义和引用-一维数组" class="headerlink" title="定义和引用(一维数组)"></a>定义和引用(一维数组)</h2><h3 id="定义-一维数组"><a href="#定义-一维数组" class="headerlink" title="定义(一维数组)"></a>定义(一维数组)</h3><ul>
+<li><p>定义数组的一般形式为</p>
+<p>  <strong>类型名</strong> <strong>数组名</strong>[常量表达式]</p>
+<p>  其常量表达式支持利用定义好的变量进行运算</p>
+<p>  <em><strong>注意:一定要使用确定的常变量, 由流输入的未确定变量是不可以用于数组的定义的</strong></em></p>
+<p>  如图:</p>
+<p>  <img src="/source/52error.png" alt="52error"></p>
+<p>  比如:</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+
+<p>  表示<strong>数组</strong>名为<code>a</code>, <strong>类型</strong>为<code>整形</code>, 共计<code>10</code>个<strong>元素</strong>, 元素<strong>脚标</strong>从[0-9]</p>
+</li>
+</ul>
+<h3 id="引用-一维数组"><a href="#引用-一维数组" class="headerlink" title="引用(一维数组)"></a>引用(一维数组)</h3><p>想要引用数组就直接键入其对应的数组元素即可, 格式为<strong>数组名</strong>[下标数值]</p>
+<p>同样下标数值也可以是<strong>整形<code>常量</code><strong>或</strong>整形表达式</strong></p>
+<p>如果单独使用数组名, 则返回的是该数组首个元素的地址</p>
+<p>(所以数组名可以直接赋值给指针)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">0</span>] = a[<span class="number">5</span>] + a[<span class="number">7</span>] - a[<span class="number">2</span>*<span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="确定元素的值"><a href="#确定元素的值" class="headerlink" title="确定元素的值"></a>确定元素的值</h3><p>定义好数组之后, 其中的每个元素都有对应的内存可供使用, 但其中都是没有数值的, 想要对其赋值, 就要用到其对应的元素名</p>
+<p><code>元素名 = 对应数值</code>的格式可以用于定义&#x2F;修改一个指定元素的值</p>
+<p>如过想在开始的时候就用对元素的值来依次进行定义, 就可以用到与变量差不多的初始化</p>
+<p>下面是一个<strong>10位整形一维数组</strong>的简单初始化</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 直接对整个数组进行初始化</span></span><br><span class="line"><span class="type">int</span> a[<span class="number">10</span>] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">0</span>&#125;;</span><br><span class="line"><span class="comment">// 对部分数据先初始化, 剩下的会自动被赋值&#x27;0&#x27;</span></span><br><span class="line"><span class="type">int</span> b[<span class="number">10</span>] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// 对一个数组进行完全初始化时可以不定义其位数</span></span><br><span class="line"><span class="type">int</span> c[] = &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="二维数组"><a href="#二维数组" class="headerlink" title="二维数组"></a>二维数组</h2><p>二维数组就是具有两个下标的数组， 有些数据需要两个因素才能确定其具体值， 所以就有了二位数组</p>
+<h3 id="定义二维数组"><a href="#定义二维数组" class="headerlink" title="定义二维数组"></a>定义二维数组</h3><p>就是比一维数组多一个脚标而已</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">类型 标识符[常量表达式][常量表达式] </span><br></pre></td></tr></table></figure>
+
+<p>多维数组就依此类推脚标即可</p>
+<h3 id="二维数组初始化"><a href="#二维数组初始化" class="headerlink" title="二维数组初始化"></a>二维数组初始化</h3><p>二维数组的初始化, 有两种方法(假定一个<code>int a[3][3]</code>)</p>
+<ul>
+<li><p>数组嵌套</p>
+<p>  可以将二维数组想象成一维套一维</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">3</span>][<span class="number">3</span>] = &#123; &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125; , &#123;<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>&#125; , &#123;<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125; &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>脚标排序</p>
+<p>  或者是依靠脚标顺序来进行自动赋值, 前提是各级脚标或二级长度大小已经确定</p>
+  <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a[<span class="number">3</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br><span class="line"><span class="comment">//or</span></span><br><span class="line">a[][<span class="number">3</span>] = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>&#125;;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>不论那种方法, a的数学表达就像矩阵一样</p>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">a</td>
+<td align="center">一</td>
+<td align="center">二</td>
+<td align="center">三</td>
+</tr>
+<tr>
+<td align="center">一</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="center">二</td>
+<td align="center">4</td>
+<td align="center">5</td>
+<td align="center">6</td>
+</tr>
+<tr>
+<td align="center">三</td>
+<td align="center">7</td>
+<td align="center">8</td>
+<td align="center">9</td>
+</tr>
+</tbody></table>
+<h3 id="二维数组的调用"><a href="#二维数组的调用" class="headerlink" title="二维数组的调用"></a>二维数组的调用</h3><p>调用也几乎与一维数组一致, 确定脚标, 如何调用就根据程序来确定</p>
+<h2 id="字符数组"><a href="#字符数组" class="headerlink" title="字符数组"></a>字符数组</h2><p>字符数组的赋值与数字型数组的赋值有些许的区别</p>
+<h3 id="赋值"><a href="#赋值" class="headerlink" title="赋值"></a>赋值</h3><p>在我们定义一个字符串时, 其在系统变量中通常会在结尾出现一个<code>&#39;\0&#39;</code>来代表字符串的结束</p>
+<p>所以为了计算长度, 我们通常也会在字符数组的结尾手动添加一个<code>\0</code>来代表结束</p>
+<h3 id="调用"><a href="#调用" class="headerlink" title="调用"></a>调用</h3><p>字符数组有两种输出方式, <strong>逐个输出</strong>和<strong>连续输出</strong></p>
+<p>逐个输出就利用脚标来进行调用</p>
+<p>连续输出就直接调用数组名, 系统会自动根据脚标顺序来对输出对象进行排序</p>
+<h3 id="字符数组的字符串处理"><a href="#字符数组的字符串处理" class="headerlink" title="字符数组的字符串处理"></a>字符数组的字符串处理</h3><p>字符串也是一种数组, c++中, 字符串操作函数都要把他们转成数组形式来进行操作</p>
+<h3 id="字符数组连接函数"><a href="#字符数组连接函数" class="headerlink" title="字符数组连接函数"></a>字符数组连接函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strcat</span>(char1[], <span class="type">const</span> char2[]);</span><br></pre></td></tr></table></figure>
+
+<p>将char1和char2合并放入char1</p>
+<h3 id="字符数组复制函数"><a href="#字符数组复制函数" class="headerlink" title="字符数组复制函数"></a>字符数组复制函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strcpy</span>(char1[], <span class="type">const</span> char2[]);</span><br></pre></td></tr></table></figure>
+
+<p>将char2覆盖到char1</p>
+<h3 id="字符数组比较函数"><a href="#字符数组比较函数" class="headerlink" title="字符数组比较函数"></a>字符数组比较函数</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strcmp</span>(<span class="type">const</span> char1[], <span class="type">const</span> char2[]);</span><br></pre></td></tr></table></figure>
+
+<p>其返回值有三种:</p>
+<ul>
+<li>char1&#x3D;&#x3D;&#x3D;char2 0</li>
+<li>char1&gt;char2 &gt;0</li>
+<li>char1&lt;char2 &lt;0</li>
+</ul>
+<p>比较方法为, 从左至右依次比较, 直到出现不同</p>
+<h3 id="字符数组长度"><a href="#字符数组长度" class="headerlink" title="字符数组长度"></a>字符数组长度</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">strlen</span>(<span class="type">const</span> <span class="type">char</span>[]);</span><br></pre></td></tr></table></figure>
+
+<p>直接返回该字符数组的长度</p>
+<p>如”China” &#x3D;&#x3D;&gt; {‘C’,’h’,’i’,’n’,’a’,’\0’}</p>
+<p>返回值<code>6</code></p>
+<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="字符串变量定义"><a href="#字符串变量定义" class="headerlink" title="字符串变量定义"></a>字符串变量定义</h3><p>在c++语法中新增了<code>string</code>类, 也就是字符串相比<code>char</code>类只储存单个字符, <code>string</code>允许用户储存字符串数组为<strong>一整个字符串对象</strong></p>
+<ul>
+<li><p>定义方法</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> stringName;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>但要注意的是, c++来源是c语言的升级, c语言中原本是没有<code>string类</code>的, 所以想使用string类, 要添加预处理语句</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="有关字符串的输入输出"><a href="#有关字符串的输入输出" class="headerlink" title="有关字符串的输入输出"></a>有关字符串的输入输出</h3><p>使用C++的流式输入输出即可 也就是 <em><strong>cin</strong></em> 和 <em><strong>cout</strong></em></p>
+<h3 id="有关字符串运算"><a href="#有关字符串运算" class="headerlink" title="有关字符串运算"></a>有关字符串运算</h3><p>string类可以使用三种运算符</p>
+<ul>
+<li><p>直接使用赋值符号</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stringName = <span class="string">&quot;I am a string object&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接进行相加</p>
+  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">string</span> str1,str2,strSum;</span><br><span class="line">str1 = <span class="string">&quot;str1&quot;</span>;</span><br><span class="line">str2 = <span class="string">&quot;str2&quot;</span>;</span><br><span class="line">strSum = str1 + str2;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; strSum;</span><br></pre></td></tr></table></figure>
+
+<p>  输出:</p>
+  <figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str1str2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>互相进行比较</p>
+<p>  string对象之间可以互相进行比较, 可以使用任意一种关系运算符</p>
+<p>  其大小关系是根据ASCII码来区分的, 也就是跟字母排列顺序差不多</p>
+</li>
+</ul>
+<h3 id="字符串数组"><a href="#字符串数组" class="headerlink" title="字符串数组"></a>字符串数组</h3><p>字符串数组就是一个可以存放字符串的数组, 其元素都是字符串</p>
+<p>调用时, 其每个元素都将被当成一个字符串对象来处理</p>
+<p><em><strong>总结, C++中对于字符串有两种处理方法, 第一种是<code>字符数组</code>, 第二种是<code>字符串类</code>, 个人从python上遗留的习惯导致我更喜欢使用后者, 因为真的更加简单</strong></em></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cdog-shen.github.io/2024/02/01/fcc_notes/cpp/%E6%95%B0%E7%BB%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-CPP/" rel="tag">C&#x2F;CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Languages/" rel="tag">Languages</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/02/01/fcc_notes/cpp/%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            C---数据类型
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/02/01/fcc_notes/cpp/%E8%BF%90%E7%AE%97%E7%AC%A6/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">C---运算符和表达式</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Cdog Shen
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="./images/dog.ico" alt="TEST"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/project">项目</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1329665666&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Linux内核以及发行版 |  TEST</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="./image/dog.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-fcc_notes/Linux_basic/Linux内核及其发行版"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Linux内核以及发行版
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/01/fcc_notes/Linux_basic/Linux%E5%86%85%E6%A0%B8%E5%8F%8A%E5%85%B6%E5%8F%91%E8%A1%8C%E7%89%88/" class="article-date">
+  <time datetime="2024-01-31T16:00:00.000Z" itemprop="datePublished">2024-02-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">6 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Linux内核及其发行版"><a href="#Linux内核及其发行版" class="headerlink" title="Linux内核及其发行版"></a>Linux内核及其发行版</h1><h2 id="内核版本"><a href="#内核版本" class="headerlink" title="内核版本"></a>内核版本</h2><p>内核版本就是Linux主系统的核心部分，包含：文件系统，硬件管理，程序运行等重要功能</p>
+<ol>
+<li>稳定的Linux内核（Stable Linux Kernel）</li>
+</ol>
+<blockquote>
+<p>它是可用的最新稳定发行版Linux内核，因此是大多数发行版使用的默认内核。它在一定程度上影响了临界的稳定性，因此有时被认为是不稳定的。</p>
+</blockquote>
+<blockquote>
+<p>内核会定期更新，新补丁会经常发布。尽管具有先进的特性，但内核仍广泛用于桌面版和服务器。</p>
+</blockquote>
+<ol start="2">
+<li>LTS内核（LTS Kernel）</li>
+</ol>
+<blockquote>
+<p>这提供了最新的长期支持（LTS）内核，并且被认为比默认内核“更稳定”。但是，它有时会使用较旧的驱动程序，这些驱动程序可能与较新的硬件不兼容，并且可能缺少较新的内核版本的某些功能。LTS内核没有固定的发布周期，但通常对于桌面版每3年更新一次，对于服务器每5年更新一次。</p>
+</blockquote>
+<blockquote>
+<p>安全补丁也同样频繁地滚动到LTS内核。但是，它仍然容易受到“破坏”的影响，但是与默认的Linux内核相比，发生这种事件的可能性要少得多，因此它通常在企业级别受到青睐。例如，根据Canonical的估计，所有Ubuntu安装中估计有95％是LTS版本。</p>
+</blockquote>
+<ol start="3">
+<li>Hardened Kernel</li>
+</ol>
+<blockquote>
+<p>它是Linux稳定内核的强化版本，但具有更高的安全性，并且在Linux之前具有上游补丁。它具有面向安全性的内核配置。可以安装：</p>
+</blockquote>
+<blockquote>
+<p>请注意，某些程序和功能可能不适用于此内核。由于停机时间长，该内核不如列表中的其他内核那么受欢迎。内核会杀死它认为是威胁的任何进程。而且，并非所有PID都是可发现的，因此无法直接寻址正在运行的可执行文件，这限制了威胁参与者的潜在攻击媒介。还可以通过补丁来实现额外的安全性。</p>
+</blockquote>
+<ol start="4">
+<li>Zen Kernel</li>
+</ol>
+<blockquote>
+<p>它是针对性能进行调整的内核，旨在以吞吐量和功耗为代价提高台式机的性能。有时它也被认为是游戏的最佳内核。它具有低延迟和高频率调度。您可以使用以下命令进行安装：</p>
+</blockquote>
+<blockquote>
+<p>内核有助于提高速度，并具有更优化的调度程序。实际上，某些现代发行版（如Garuda Linux）使用Zen内核作为默认内核，以优化桌面版和PC的性能。</p>
+</blockquote>
+<p>​通常情况下，Linux的内核版本不带有桌面操作系统，仅仅含有最小占用的Linux终端以及大量的命令，由于系统占用低，Linux内核的良好兼容性，内核版本通常被用于嵌入式开发</p>
+<h2 id="发行版"><a href="#发行版" class="headerlink" title="发行版"></a>发行版</h2><p>​		Linux发行版有很多，比如Redhat CentOS Debian Ubuntu Kali Arch Mint等等一系列不同特性的发行版系统</p>
+<p>​		发行版内包括了Linux内核，并在其基础上，开发了桌面环境，办公环境，媒体播放器，DB，包管理软件(apt-get)等软件，更方便我们去操作和管理系统</p>
+<h3 id="rpm和dpkg"><a href="#rpm和dpkg" class="headerlink" title="rpm和dpkg"></a>rpm和dpkg</h3><p>基于rpm包管理系统的 red hat 系 Linux<br>和<br>基于dpkg的debain系Linux都有出色的图形化安装界面</p>
+<p>安装时如果无特殊需求直接使用基本分区方案: </p>
+<ul>
+<li>300-500MB的boot(efi)</li>
+<li>1.5*RAM的swap</li>
+<li>剩余分配给<code>/</code>(root)</li>
+</ul>
+<h3 id="arch的pacman"><a href="#arch的pacman" class="headerlink" title="arch的pacman"></a>arch的pacman</h3><p>archLinux的自主管理性让他非常灵活的同时也给小白用户带来了不便</p>
+<p>但总体上分为这几个步骤: </p>
+<ul>
+<li><p>分区磁盘</p>
+<ul>
+<li>查看磁盘状况</li>
+</ul>
+<blockquote>
+<p>lsblk -l</p>
+<p>lsblk -f</p>
+<p>fdisk -l</p>
+</blockquote>
+<p>这三条命令用来查看磁盘状况信息, 准备好了就可以开始安装了</p>
+<ul>
+<li>给磁盘分区</li>
+</ul>
+<blockquote>
+<p>cfdisk &lt;磁盘块文件&gt;</p>
+</blockquote>
+<p>这是一个图形化的分区软件, 根据提示分区即可</p>
+<ul>
+<li>格式化磁盘</li>
+</ul>
+<blockquote>
+<p>mkfs.ext4 &lt;根分区块文件&gt;</p>
+</blockquote>
+<blockquote>
+<p>mkswap &lt;Linux swap交换分区块文件&gt;</p>
+</blockquote>
+<blockquote>
+<p>mkfs.fat -F 32 &lt;boot 分区块文件&gt;</p>
+</blockquote>
+<p>分别给三个基础分区格式化成为对应的文件系统</p>
+</li>
+<li><p>挂载磁盘到安装位置</p>
+<p>以&#x2F;mnt为安装的操作系统的<code>/</code></p>
+<blockquote>
+<p>mount &lt;根分区块文件&gt; &#x2F;mnt</p>
+</blockquote>
+<blockquote>
+<p>mount –mkdir &lt;boot 分区块文件&gt; &#x2F;mnt&#x2F;boot</p>
+</blockquote>
+<p>挂载交换分区</p>
+<blockquote>
+<p>swapon &lt;交换分区块文件&gt;</p>
+</blockquote>
+</li>
+<li><p>更新软件源</p>
+<blockquote>
+<p>pacman -Sy</p>
+</blockquote>
+</li>
+<li><p>通过pacman安装系统</p>
+<blockquote>
+<p>pacstrap -K &#x2F;mnt base base-devel linux linux-firmware vim</p>
+<p>依次安装: 基本系统 稳定版内核 固件 基本开发组件 vim</p>
+</blockquote>
+</li>
+<li><p>更新自动挂载信息</p>
+<blockquote>
+<p>genfstab -U &#x2F;mnt &gt;&gt; &#x2F;mnt&#x2F;etc&#x2F;fstab</p>
+</blockquote>
+<p>将新系统的当前挂载信息更新到fstab</p>
+</li>
+<li><p>切换进入系统</p>
+<blockquote>
+<p>arch-chroot &#x2F;mnt</p>
+</blockquote>
+</li>
+<li><p>设置用户配置</p>
+<ol>
+<li>改改root密码</li>
+<li>添加新的主用户(记得加-m)</li>
+<li>更新一下密码</li>
+<li>加一下sudoer管理员</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">为用户添加sudo权限vim /etc/sudoers 反注释%wheel ALL=(ALL) ALL 如果想在输入密码时显示星号，可以追加Defaults env_reset,pwfeedback</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地化</p>
+<ol>
+<li>设置时区配置</li>
+</ol>
+<blockquote>
+<p>ln -sf &#x2F;usr&#x2F;share&#x2F;zoneinfo&#x2F;Asia&#x2F;Shanghai &#x2F;etc&#x2F;localtime</p>
+</blockquote>
+<blockquote>
+<p>hwclock –systohc –utc</p>
+</blockquote>
+<ol start="2">
+<li>设置语言</li>
+</ol>
+<blockquote>
+<p>echo “en_US.UTF-8 UTF-8” &gt;&gt; &#x2F;etc&#x2F;locale.gen<br>echo “zh_CN.UTF-8 UTF-8” &gt;&gt; &#x2F;etc&#x2F;locale.gen</p>
+</blockquote>
+<blockquote>
+<p>locale-gen</p>
+</blockquote>
+<blockquote>
+<p>echo LANG&#x3D;en_US.UTF-8 &gt;&gt; &#x2F;etc&#x2F;locale.conf</p>
+</blockquote>
+</li>
+<li><p>主机名更改</p>
+<p>编辑&#x2F;etc&#x2F;hostname添加你的主机名, 这一步自定义</p>
+<p>编辑&#x2F;etc&#x2F;hosts，把myhostname改为你自己的主机名</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">127.0.1.1   myhostname.localdomain  myhostname</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置GRUB</p>
+<blockquote>
+<p>pacman -S os-prober  &#x2F;&#x2F;双系统才需要</p>
+</blockquote>
+<blockquote>
+<p>pacman -S dosfstools grub efibootmgr  &#x2F;&#x2F;下载所需包</p>
+</blockquote>
+<ul>
+<li><p>UEFI引导</p>
+<blockquote>
+<p>grub-install –target&#x3D;x86_64-efi –efi-directory&#x3D;&#x2F;boot&#x2F;efi –recheck</p>
+</blockquote>
+</li>
+<li><p>BIOS引导</p>
+<blockquote>
+<p>grub-install &#x2F;dev&#x2F;sda –recheck</p>
+</blockquote>
+</li>
+</ul>
+<p>将更改写入到GRUB</p>
+<blockquote>
+<p>grub-mkconfig -o &#x2F;boot&#x2F;grub&#x2F;grub.cfg</p>
+</blockquote>
+</li>
+<li><p>设置网络</p>
+<blockquote>
+<p>pacman -S netctl iw wpa_supplicant dialog networkmanager dhcp dhcpcd</p>
+</blockquote>
+<p>安装所有网络所需组件</p>
+<blockquote>
+<p>reboot</p>
+</blockquote>
+<p><em><strong>重启并移除安装介质进入新系统</strong></em></p>
+<blockquote>
+<p>sudo systemctl enable –now dhcpcd<br>sudo systemctl enable –now NetworkManager</p>
+</blockquote>
+<p>启动所有网络服务</p>
+</li>
+<li><p>设置KDE plasma</p>
+<blockquote>
+<p>sudo pacman -S noto-fonts-cjk noto-fonts-emoji</p>
+</blockquote>
+<p>字体安装</p>
+<p>然后可以回到&#x2F;etc&#x2F;locale.conf注释掉英语相关配置</p>
+<blockquote>
+<p>sudo pacman -S xorg  &#x2F;&#x2F;X Window server</p>
+<p>sudo pacman -S plasma-meta plasma-nm konsole dolphin kde-connect firefox  &#x2F;&#x2F; kde简化</p>
+<p>sudo pacman -S plasma plasma-nm kde-applications &#x2F;&#x2F;kde应用</p>
+</blockquote>
+<blockquote>
+<p>sudo systemctl enable sddm  &#x2F;&#x2F;自启X Window server</p>
+</blockquote>
+<p>还可以装个触控板驱动</p>
+<blockquote>
+<p>sudo pacman -S xf86-input-synaptics</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="资料来源"><a href="#资料来源" class="headerlink" title="资料来源"></a>资料来源</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="http://www.hifumi.cn/index.php/2023/01/18/archlinux_ming_ling_xing_an_zhuang_shou_ce/">http://www.hifumi.cn/index.php/2023/01/18/archlinux_ming_ling_xing_an_zhuang_shou_ce/</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/363316108">https://zhuanlan.zhihu.com/p/363316108</a></p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cdog-shen.github.io/2024/02/01/fcc_notes/Linux_basic/Linux%E5%86%85%E6%A0%B8%E5%8F%8A%E5%85%B6%E5%8F%91%E8%A1%8C%E7%89%88/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/02/01/fcc_notes/How-to-use-git/%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD-branch/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            git高级教程
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/02/01/fcc_notes/Linux_basic/Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Linux的文件系统</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Cdog Shen
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="./images/dog.ico" alt="TEST"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/project">项目</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1329665666&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>

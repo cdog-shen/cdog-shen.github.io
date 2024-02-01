@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+
+
+<html lang="zh">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>C---面向过程 |  TEST</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="./image/dog.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css"
+      />
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-fcc_notes/cpp/面向过程的程序设计"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  C---面向过程
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/01/fcc_notes/cpp/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="article-date">
+  <time datetime="2024-01-31T16:00:00.000Z" itemprop="datePublished">2024-02-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/C-CPP/">C/CPP</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">4.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">17 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="面向过程的C-程序设计"><a href="#面向过程的C-程序设计" class="headerlink" title="面向过程的C++程序设计"></a>面向过程的C++程序设计</h1><h2 id="基于过程的程序设计和算法"><a href="#基于过程的程序设计和算法" class="headerlink" title="基于过程的程序设计和算法"></a>基于过程的程序设计和算法</h2><h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><h4 id="算法的概念"><a href="#算法的概念" class="headerlink" title="算法的概念"></a>算法的概念</h4><p>一个基于过程设计的程序应该具有两个部分</p>
+<p>1.对<strong>数据</strong>的描述: 程序中数据和其表现形式(数据结构)</p>
+<p>2.对<strong>操作</strong>的描述: 操作步骤(算法)</p>
+<p>所以就产生了一个等式: 程序 &#x3D; 算法 + 数据</p>
+<p>算法必须具体的描述出问题的每一步解决方案</p>
+<h4 id="算法的表示"><a href="#算法的表示" class="headerlink" title="算法的表示"></a>算法的表示</h4><p>无非就那么几种</p>
+<p>自然语言 伪代码 流程图 计算机语言</p>
+<h2 id="C-的程序结构和C-语句"><a href="#C-的程序结构和C-语句" class="headerlink" title="C++的程序结构和C++语句"></a>C++的程序结构和C++语句</h2><p>每一个程序单位由以下3个部分组成</p>
+<ul>
+<li>预处理指令: 如<code>#include</code>和<code>#define</code></li>
+<li>全局声明: 在函数外部对数据类型和函数以及变量的声明和定义</li>
+<li>函数: 包括函数首部和函数体, 在函数体中可以包含声明语句和执行语句</li>
+</ul>
+<p>如一个最简单的hello_world程序</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span>  <span class="comment">//预处理指令</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std; <span class="comment">//函数外的全局声明</span></span><br><span class="line"><span class="type">int</span> a = <span class="number">1</span>; <span class="comment">//函数外的全局声明</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> <span class="comment">//函数首部</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Hello world&quot;</span>; <span class="comment">//执行语句</span></span><br><span class="line">    <span class="type">int</span> b, sum; <span class="comment">//函数内的声明</span></span><br><span class="line">    cin &gt;&gt; b; <span class="comment">//执行语句</span></span><br><span class="line">    sum = a + b; <span class="comment">//执行语句</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;a + b = &quot;</span> &lt;&lt; sum &lt;&lt; endl; <span class="comment">//执行语句</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">//执行语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果一个变量在函数之外进行声明, 此变量就是全局变量(生命周期为整个程序)</p>
+<h3 id="C-语句"><a href="#C-语句" class="headerlink" title="C++语句"></a>C++语句</h3><p>C++的语句可以分为以下的四种</p>
+<ul>
+<li><p>声明语句</p>
+<p>  如: <code>int</code>变量定义</p>
+</li>
+<li><p>执行语句</p>
+<p>  通知计算机完成一系列操作的语句:</p>
+<ul>
+<li><p>程序流程控制语句</p>
+<table>
+<thead>
+<tr>
+<th align="left">语句</th>
+<th align="left">效果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">if() ~ else ~</td>
+<td align="left">条件选择</td>
+</tr>
+<tr>
+<td align="left">for() ~</td>
+<td align="left">for循环</td>
+</tr>
+<tr>
+<td align="left">while() ~</td>
+<td align="left">while循环</td>
+</tr>
+<tr>
+<td align="left">do ~ while()</td>
+<td align="left">dowhile循环</td>
+</tr>
+<tr>
+<td align="left">continue</td>
+<td align="left">跳过循环</td>
+</tr>
+<tr>
+<td align="left">break</td>
+<td align="left">跳出循环</td>
+</tr>
+<tr>
+<td align="left">switch</td>
+<td align="left">多分枝选择</td>
+</tr>
+<tr>
+<td align="left">goto</td>
+<td align="left">转到</td>
+</tr>
+<tr>
+<td align="left">return</td>
+<td align="left">返回</td>
+</tr>
+</tbody></table>
+<p>  其中的<code>()</code>表示其中包括一个判断条件, <code>~</code>表示内嵌语句</p>
+</li>
+</ul>
+</li>
+<li><p>函数和流对象调用语句</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">name</span>(x, y, z); <span class="comment">//调用name函数的语句</span></span><br><span class="line">cout &lt;&lt; x &lt;&lt; endl; <span class="comment">//流对象调用语句</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>表达式语句</p>
+<p>  一个表达式+<code>;</code></p>
+</li>
+<li><p>空语句</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">;</span><br></pre></td></tr></table></figure>
+
+<p>  其作用等同于python的<code>pass</code></p>
+<p>  它什么也不做, 只是有时被当作是程序的转向点, 或是循环体占位</p>
+</li>
+<li><p>复合语句</p>
+<p>  由<code>&#123;&#125;</code>框选的语句就是复合语句, 符合语句被当作是一条语句</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    z = x + y;</span><br><span class="line">    <span class="keyword">if</span> (z &gt; <span class="number">100</span>)</span><br><span class="line">        z = z - <span class="number">100</span>;</span><br><span class="line">    cout &lt;&lt; z;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>  符合语句的应用范围很广, 比如循环体和条件判断</p>
+</li>
+</ul>
+<h3 id="赋值操作"><a href="#赋值操作" class="headerlink" title="赋值操作"></a>赋值操作</h3><p>赋值语句是由赋值表达式+<code>;</code>组成的语句</p>
+<p>因为赋值符号可以被用作表达式当中的赋值, 所以表达式就可以很很多其他的运算符和操作连用, 就产生了很多灵活的操作(跟python很相似)</p>
+<h2 id="C-的输入和输出"><a href="#C-的输入和输出" class="headerlink" title="C++的输入和输出"></a>C++的输入和输出</h2><p>Python: input输入 print输出—函数</p>
+<p>C: scanf输入 printf输出—函数</p>
+<p>C++: cin输入 cout输出—流对象</p>
+<p>C++的输入和输出是由”流”的方式呈现的, 流就就是设备之间通信的数据流</p>
+<p>数据流是由一系列字节组成的, 数据按照流的顺序排列的</p>
+<p>cout是输出流的名字 cin是输入流的名字 &lt;&lt;是流插入运算符 &gt;&gt;是流提取运算符</p>
+<p>cin流的路径</p>
+<p>键盘 —“数据”—&gt; cin流对象 ——&gt; &gt;&gt;(提取) ——&gt; 计算机(指定变量)</p>
+<p>cout流的路径</p>
+<p>程序数据 —“Hello”—&gt; &lt;&lt;(插入) ——&gt; cout(流对象) ——&gt; 控制台</p>
+<p>有关流对象和插入&#x2F;提取运算符的信息都是存放在输入输出流库中的<code>&lt;iostream&gt;</code>中的</p>
+<p>如果需要使用, 必须要进行预处理导入</p>
+<h3 id="cin-cout的基本使用"><a href="#cin-cout的基本使用" class="headerlink" title="cin&#x2F;cout的基本使用"></a>cin&#x2F;cout的基本使用</h3><p><code>cin &gt;&gt; 变量1 &gt;&gt; 变量2 &gt;&gt; 变量n;</code></p>
+<p><code>cout &lt;&lt; 表达式1 &lt;&lt; 表达式2 &lt;&lt; 表达式3 &lt;&lt; 表达式n;</code></p>
+<p>cin的输入会自动根据变量类型来在输入流中提取相应长度的数据(尽管你只是输入了一段数据)</p>
+<p>比如char型的数据只会按顺序读取数据中的单个字符</p>
+<p>每当遇到空格和换行的时候, cin就会当成下一个变量的开始, 如果没有下一个变量, 就会执行确认, 所以cin不能把空格字符和回车换行符作为字符输入给变量, 它们将被跳过, 如果需要, 会将用到接下来的<code>getchar</code>函数</p>
+<p>cout是没有结束字符的, 每一条cout都会紧跟着上一条的输出结尾后面输出</p>
+<p>所以文字间的空格都需要手动添加</p>
+<p>在组织流输入的时候记得要注意输入的数据类型, 否则容易出错</p>
+<h3 id="在标准输入-输出流中使用控制符"><a href="#在标准输入-输出流中使用控制符" class="headerlink" title="在标准输入&#x2F;输出流中使用控制符"></a>在标准输入&#x2F;输出流中使用控制符</h3><p>流控制符都包含在头文件<code>&lt;iomanip&gt;</code>内, 其作用有很多, 比如定义小数位数等</p>
+<table>
+<thead>
+<tr>
+<th align="left">控制符</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dec</td>
+<td align="left">设置数的基数为10</td>
+</tr>
+<tr>
+<td align="left">hex</td>
+<td align="left">设置数的基数为16</td>
+</tr>
+<tr>
+<td align="left">oct</td>
+<td align="left">设置数的基数为8</td>
+</tr>
+<tr>
+<td align="left">setfill(c)</td>
+<td align="left">设置填充字符c(c可以是变量也可以是常量)</td>
+</tr>
+<tr>
+<td align="left">setprecision(n)</td>
+<td align="left">设置浮点精度为n位, 在以fixed(固定小数位数)和scientific(指数)形式输出时n为小数位数</td>
+</tr>
+<tr>
+<td align="left">setw(n)</td>
+<td align="left">设字符宽度n位</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios:fixed)</td>
+<td align="left">浮点数固定小数位数</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::scientific)</td>
+<td align="left">浮点数科学计数法表示</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::left)</td>
+<td align="left">输出数据左端对其</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::right)</td>
+<td align="left">输出数据右端对齐</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::skipws)</td>
+<td align="left">忽略前导空格</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::uppercase)</td>
+<td align="left">16进制大写</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::lowercase)</td>
+<td align="left">16进制小写</td>
+</tr>
+<tr>
+<td align="left">setiosflags(ios::showpos)</td>
+<td align="left">正数<code>+</code>显示</td>
+</tr>
+</tbody></table>
+<p>如果cout语句中没有任何的流数据, 只有操作符的话, 则可以统一设定数据流输出格式</p>
+<h3 id="putchar和getchar"><a href="#putchar和getchar" class="headerlink" title="putchar和getchar"></a>putchar和getchar</h3><p><code>putchar(c)</code>可以向终端输出一个字符, 其中的C可以是字符(转义字符也可)也可以是ASCII码</p>
+<p><code>getchar(c)</code>的返回值是输入数值的整数ASCII码, 所以可以获取空格字符以及回车字符等特殊字符的输入</p>
+<h3 id="scanf和printf"><a href="#scanf和printf" class="headerlink" title="scanf和printf"></a>scanf和printf</h3><p>C语言的输入和输出函数是<code>scanf</code>和<code>printf</code>函数, 它们使用起来要比C++的流式输入输出繁琐很多</p>
+<p>下面是源码举例, 我们先按照书上的做法, 对<code>scanf</code>的赋值对象设定为其对应的变量地址(我加了一条, 输出各个变量的内存地址)</p>
+<p><img src="/source/scanf.png" alt="scanf"></p>
+<p>可以正常输出变量内的值</p>
+<p>如果不使用内存操作符<code>&amp;</code>的话, 就出现这样的情况</p>
+<p><img src="/source/wrong_scanf.png" alt="wrong"></p>
+<p>可以看出调试控制台中并没有相应的变量对应值</p>
+<h2 id="关系-逻辑运算"><a href="#关系-逻辑运算" class="headerlink" title="关系&#x2F;逻辑运算"></a>关系&#x2F;逻辑运算</h2><p>对于if函数, 我们在python中已经可以很熟练的使用了, 在C++中, 关键字都是一样的, 只不过有一些语法格式上的出入需要解释, 先来看代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> ori_prices;</span><br><span class="line">    <span class="type">float</span> discount = <span class="number">0.75</span>;</span><br><span class="line">    <span class="type">float</span> prices;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;Input your origin prices: \n&quot;</span>;</span><br><span class="line">    cin &gt;&gt; ori_prices;</span><br><span class="line">    <span class="keyword">if</span> (ori_prices &gt;= <span class="number">1000</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        prices = (ori_prices * discount);</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;You got a discount !\nYour new prices is &quot;</span> &lt;&lt; prices &lt;&lt; <span class="string">&quot;$\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        prices = ori_prices;</span><br><span class="line">        cout &lt;&lt; <span class="string">&quot;You don&#x27;t have the discount quallity. The prices is &quot;</span> &lt;&lt; prices &lt;&lt; <span class="string">&quot;$\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>就是很简单一个价格判断的例子</p>
+<p>但是跟书上的源码有些差别, 这是因为在我打出<code>if</code>之后, vscode的代码补全自动帮我补全至以下格式</p>
+<p><img src="/source/if_format.png" alt="if_format"></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="comment">/* condition */</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这是因为<code>if</code>之后的候选只能是一条语句, 所以我们就可以用符合语句<code>&#123;&#125;</code>将多条语句整合</p>
+<h3 id="关系运算和关系表达式"><a href="#关系运算和关系表达式" class="headerlink" title="关系运算和关系表达式"></a>关系运算和关系表达式</h3><p>if后的<code>/* condition */</code>就是关系表达式</p>
+<p>而我们在python中实现的<code>&gt; &lt; &gt;= &lt;= == !=</code>就不再是算数运算了, 而是<strong>关系运算符</strong>了</p>
+<p>运算符之间有优先级, 是:算数 &gt; 关系 &gt; 赋值</p>
+<p>而就像算数符之间有优先级一样, 关系符之间也有: <code>&lt;= &lt; &gt;= &gt;</code> &gt; <code>== !=</code></p>
+<p>关系表达式的一般格式: 表达式 关系运算符 表达式</p>
+<p>式子的真假是根据两端表达式的值和关系符来确定的</p>
+<p>赋值表达式的值分为真和假两大<strong>类</strong>, 注意是<strong>类</strong>, 因为其值会根据赋值对象的类型不同而自适应:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> <span class="type">const</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">0</span>, b = <span class="number">1</span>;</span><br><span class="line">    <span class="type">int</span> Rint, Fint;</span><br><span class="line">    <span class="type">char</span> Rchar, Fchar;</span><br><span class="line">    <span class="type">float</span> Rfloat, Ffloat;</span><br><span class="line">    Rchar = (a &lt; b);</span><br><span class="line">    Rint = (a &lt; b);</span><br><span class="line">    Rfloat = (a &lt; b);</span><br><span class="line">    Fint = (a &gt; b);</span><br><span class="line">    Fchar = (a &gt; b);</span><br><span class="line">    Ffloat = (a &gt; b);</span><br><span class="line">    cout &lt;&lt; Rchar &lt;&lt; <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        &lt;&lt; Rint &lt;&lt; <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        &lt;&lt; Rfloat &lt;&lt; <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        &lt;&lt; Fint &lt;&lt; <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        &lt;&lt; Fchar &lt;&lt; <span class="string">&#x27;\n&#x27;</span></span><br><span class="line">        &lt;&lt; Ffloat &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>用这段代码, 并在<code>return</code>处设置断点, 即可获得变量具体状态</p>
+<p><img src="/source/value_of_bool.png" alt="value_of_bool"></p>
+<h3 id="逻辑常量和逻辑变量"><a href="#逻辑常量和逻辑变量" class="headerlink" title="逻辑常量和逻辑变量"></a>逻辑常量和逻辑变量</h3><p>C语言没有提供逻辑型的数据, 所有有关逻辑<code>真</code>的都是<code>1</code>, 有关<code>假</code>值的都是<code>0</code></p>
+<p>C++中有, false和true</p>
+<p>逻辑型的数据要用<code>bool</code>关键字声明, 值只能是<code>ture</code>or<code>false</code></p>
+<p>测试源码(简略版):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> bl;</span><br><span class="line">bl = (<span class="number">1</span>&gt;<span class="number">2</span>);</span><br><span class="line">cout &lt;&lt; <span class="type">bool</span>;</span><br></pre></td></tr></table></figure>
+
+<p>但这样做程序结果返回值是<code>0</code></p>
+<p>原因就是编译器在处理bool型的<code>true</code>和<code>false</code>时会直接将其处理为1或0</p>
+<p><img src="/source/tf.png" alt="tf"></p>
+<p>所以, <code>bool</code>还可以参与算术运算</p>
+<h3 id="逻辑运算和逻辑表达式"><a href="#逻辑运算和逻辑表达式" class="headerlink" title="逻辑运算和逻辑表达式"></a>逻辑运算和逻辑表达式</h3><p>逻辑运算符就三种, <code>与&amp;&amp;</code> <code>非!</code> <code>或||</code>, 其运算性质就不过多赘述了</p>
+<p>其中<code>非!</code>符号的运算优先级最高(有改变变量属性的设定), 所以要最先运算</p>
+<h3 id="选择关系和if"><a href="#选择关系和if" class="headerlink" title="选择关系和if"></a>选择关系和if</h3><p>选择关系就是if</p>
+<p>正常结构</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (表达式)&#123;</span><br><span class="line">    <span class="comment">/* 真 所执行的代码 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (表达式)&#123;</span><br><span class="line">    <span class="comment">/* 真 所执行的代码 */</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">/* 所有表达式都不满足 所执行的代码 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>此外, 除了正常结构中的if和else, if内的复合语句还可以嵌套if(个人习惯: 把if后面的语句一律包在符合语句中, 格式化代码, 更为易读)</p>
+<h3 id="条件运算符和条件表达式"><a href="#条件运算符和条件表达式" class="headerlink" title="条件运算符和条件表达式"></a>条件运算符和条件表达式</h3><p>条件运算符是一对符号<code>? :</code>每个符号后面各有一个对应的备选值</p>
+<p>比如这部分代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> t = <span class="string">&#x27;T&#x27;</span>;</span><br><span class="line"><span class="type">char</span> f = <span class="string">&#x27;F&#x27;</span>;</span><br><span class="line"><span class="type">int</span> a, b;</span><br><span class="line">cin &gt;&gt; a &gt;&gt; b;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;a&gt;b?&quot;</span> &lt;&lt; <span class="built_in">char</span>((a&gt;b)?t:f);</span><br></pre></td></tr></table></figure>
+
+<p>最后一串等同于下面这一行</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (a&gt;b)</span><br><span class="line">    cout &lt;&lt; <span class="built_in">char</span>(t);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">char</span>(f);</span><br></pre></td></tr></table></figure>
+
+<p>所以<code>? :</code>的作用一目了然了, 真取<code>?</code>后面的值, 假取<code>:</code>后面的值</p>
+<h3 id="多分支选择和switch"><a href="#多分支选择和switch" class="headerlink" title="多分支选择和switch"></a>多分支选择和switch</h3><p>当程序出现多分支需求的时候, 可以采用if嵌套的方法, 去逐级的判断条件, 但如果分支过多, 就会出现if的层层嵌套, 使代码过于冗长, 且丢失可读性, 这时候switch语句就可以解决这个问题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span> (<span class="comment">/* 表达式 */</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">case</span> <span class="comment">/* 常量表达式1 */</span>:</span><br><span class="line">    <span class="comment">/* 语句 */</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> <span class="comment">/* 常量表达式n */</span>:</span><br><span class="line">    <span class="comment">/* 语句 */</span></span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line">    <span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当<code>switch</code>中固定表达式数值等于与<code>case</code>中的值对应上, 就会触发相应的语句, 每一个常量表达式都匹配不上的话就会执行默认的<code>default</code>下面的语句</p>
+<p><strong>注意: 每个<code>case</code>中的值必须要互不相同, 且是一个常量值, 不然就会引起矛盾</strong></p>
+<p>而且<code>case</code>语句<strong>不起到流程控制</strong>的作用, 各自的语句执行完后会进入下面一个判断, 从而导致执行<code>default</code>的语句运行, 所以每条语句的内部添加一个<code>break</code>语句用来跳出<code>switch</code>体</p>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="while"><a href="#while" class="headerlink" title="while"></a>while</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (<span class="comment">/* 表达式 */</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 语句 */</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>while就是先进行循环判断, 若为真则进入循环体, 若为假则结束循环</p>
+<h3 id="do-while"><a href="#do-while" class="headerlink" title="do-while"></a>do-while</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 语句 */</span></span><br><span class="line">&#125; <span class="keyword">while</span> (<span class="comment">/* 表达式 */</span>);</span><br></pre></td></tr></table></figure>
+
+<p>do-while就是在while前面多加一个do, 顾名思义就是先进行循环体, 再进行判断是否要进行下一次的循环, 所以无论如何, do-while都会执行一次</p>
+<h3 id="for"><a href="#for" class="headerlink" title="for"></a>for</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="comment">/* 初值设定语句 */</span>; <span class="comment">/* 条件语句 */</span>; <span class="comment">/* 循环变量增值语句 */</span>)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 语句 */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>省略初值设定语句</strong>: 可以在for循环就设置初值, 但切记使用时要声明</p>
+<p><strong>省略条件语句</strong>: 即构成死循环</p>
+<p><strong>省略循环变量增值语句</strong>: 需要自行在循环体中改变循环变量, 要不然也是死循环</p>
+<p><strong>省略初值设定语句 循环变量增值语句</strong>: 变成一个while</p>
+<h3 id="continue和break"><a href="#continue和break" class="headerlink" title="continue和break"></a>continue和break</h3><p><code>continue</code>关键字, 结束本<strong>次</strong>循环<br><code>break</code>关键字, 结束本<strong>个</strong>循环</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>自定义函数, 跟python上的大同小异, 只不过声明用的def要换成对应的格式即可</p>
+<p>函数又分为四类: <code>自定义</code> <code>有参</code> <code>无参</code> <code>库函数</code>(可以互相涵盖)</p>
+<h3 id="定义函数的一般形式"><a href="#定义函数的一般形式" class="headerlink" title="定义函数的一般形式"></a>定义函数的一般形式</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//无参一般形式</span></span><br><span class="line">类型名 函数名([<span class="type">void</span>])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//有参一般形式</span></span><br><span class="line">类型名 函数名(形参列表[没有声明的要进行声明 有初始值的可以进行初始化])</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若非特殊情况, 每个函数一定要根据计算情况返回计算值, 这样才能保证函数的工作结果能被使用, void函数的本身就无返回值, 所以不需要添加</p>
+<h3 id="return关键字"><a href="#return关键字" class="headerlink" title="return关键字"></a>return关键字</h3><p>return就是用来进行函数的返回值输出的</p>
+<p>其后方可以添加一个变量, 或者是一个表达式, return就是一个函数的结尾, return执行完成后函数就结束了, 有return的函数才能在主程序调用是赋给某个变量</p>
+<p>return返回值的类型要和其所在函数开头所定义的类型一致</p>
+<h3 id="函数的调用"><a href="#函数的调用" class="headerlink" title="函数的调用"></a>函数的调用</h3><ul>
+<li><p>函数语句</p>
+<p>  单独的函数语句调用, 就是并不需要该函数的返回值仅仅是需要其完成一系列操作的情况</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">function_name</span>(parameter_list)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数表达式</p>
+<p>  就是把函数调用在一个表达式当中, 需要用到其返回值(就是函数对式子的输入值)</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="built_in">function_name</span>(parameter_list)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>函数实参</p>
+<p>  就是把函数返回值当作实参导入另一个函数或方法</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">function_name0</span>(<span class="built_in">function_name1</span>(parameter_list),<span class="built_in">function_name2</span>(parameter_list))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="函数的嵌套"><a href="#函数的嵌套" class="headerlink" title="函数的嵌套"></a>函数的嵌套</h3><p><em><strong>注意: C++中是不允许函数嵌套定义的</strong></em></p>
+<p>也就是说, 你不能在函数中去定义一个新函数</p>
+<p>但是, 函数和函数之间可以互相调用</p>
+<p>比如有a, b, c三个函数</p>
+<p>你可以在a的函数体中调用函数b和c, 同理其他的也一样</p>
+<h3 id="函数的声明"><a href="#函数的声明" class="headerlink" title="函数的声明"></a>函数的声明</h3><p>在之前学习的时候有过几个例子, 你需要把函数写在主函数之后时, 需要提前在主函数中声明</p>
+<p>这一点在函数之间调用时也非常重要, 如果不想考虑程序编写的顺序, 那么就要添加几行函数声明</p>
+<h4 id="函数原型"><a href="#函数原型" class="headerlink" title="函数原型"></a>函数原型</h4><p>其实你在声明函数的时候也不一定要对形参进行定义, 你只需要给出形参的类型即可</p>
+<p>比如</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">float</span> <span class="title">max</span><span class="params">(<span class="type">float</span>, <span class="type">float</span>)</span></span></span><br></pre></td></tr></table></figure>
+
+<p>这是C&#x2F;C++的一个重要特点, 他的主要作用是根据函数原型在程序编译阶段对调用函数的合法性进行全面检查, 以确保调用时, 函数名, 导入的数据类型、个数都要与定义时一致</p>
+<h4 id="函数的外部声明"><a href="#函数的外部声明" class="headerlink" title="函数的外部声明"></a>函数的外部声明</h4><p>如果嫌麻烦, 该如何用一个总声明来影响到整个文件呢?</p>
+<p>在<code>mian</code>之前写好<code>函数原型</code>, 且与<code>mian</code>同级, 这样的声明叫做外部声明, 作用域为整个文件</p>
+<h3 id="函数的重载"><a href="#函数的重载" class="headerlink" title="函数的重载"></a>函数的重载</h3><p>C++中允许使用相同的函数名来定义不同的工作, 即为函数重载</p>
+<p>但互相重名的函数之间需要满足<code>参数个数</code> <code>参数类型</code> <code>参数顺序</code>三者至少有一个不i一样, 否则编译器就会混淆函数, 导致错误</p>
+<h3 id="函数模板"><a href="#函数模板" class="headerlink" title="函数模板"></a>函数模板</h3><p>比如一个求最大值的函数, 需要针对其不同的数据类型来定制函数</p>
+<p>如果使用函数重载的方法, 函数体还是要在文件中重复出现, 那么有没有方法能够省略函数体, 只让其出现一次呢?</p>
+<p>C++提供了<code>函数模板</code>功能</p>
+<p>使用方法:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt; <span class="comment">// 模板声明, typename T就是指定&#x27;T&#x27;代表类型参数</span></span><br><span class="line"><span class="function">T <span class="title">function</span><span class="params">(T a, T b, T c, T d)</span> <span class="comment">// 定义通用函数, T作为虚拟的类型名</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">/* code */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>调用时只需要带入相对应的数据即可(前提是互相可以运算)</p>
+<h3 id="内调函数"><a href="#内调函数" class="headerlink" title="内调函数"></a>内调函数</h3><p>如果一个函数在主函数中被调用, 其在主函数中的表达方式是一个调用方法, 函数本身则存在于内存空间的另一个位置所以整个调用过程为</p>
+<p>主函数启动 -&gt; 函数调用语句(指向内存空间) -&gt; 转到函数 -&gt; 执行</p>
+<p>所以中间指向内存和转到内存也是需要时间的, 当一个函数足够短小简单, 直接运行相比函数调用要花费更少的时间, 但又有重复调用的需求时, 就可以使用内调关键字<code>inline</code></p>
+<p>在函数定义(或者声)的前面加上inline关键字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">three</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;&quot;</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        cout &lt;&lt; <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当遇到该函数的调用语句时, 编译器就会直接将这个函数的源码直接插入到主函数当中, 顺序执行, 遇到这样的需求时可提高程序执行效率, 但使用不当会造成可执行文件的主函数冗长</p>
+<hr>
+<p><em><strong>有关变量属性的笔记因为笔记结构问题, 移至<a href="./%E5%8F%98%E9%87%8F.md">变量笔记</a>当中</strong></em></p>
+<hr>
+<h3 id="内部函数和外部函数"><a href="#内部函数和外部函数" class="headerlink" title="内部函数和外部函数"></a>内部函数和外部函数</h3><p>还是两个神奇的关键字<code>static</code>和<code>cxtern</code></p>
+<p><code>static</code>可以让函数仅限于所在文件被引用, 以防不同的文件的同名函数之间相互干扰</p>
+<p><code>extern</code>可以让函数在其他文件被调用, 比如一个文件[source.cpp], 其内部只定义一个函数 <strong>int fu1(int, int)</strong> (没有main), 而想在其他文件中调用这个函数, 就要这样使用<code>extern</code>关键字</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">extern</span> <span class="type">int</span> <span class="title">fu1</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">fu1</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="h-头文件"><a href="#h-头文件" class="headerlink" title=".h 头文件"></a>.h 头文件</h2><p>头文件就像python的模块</p>
+<ul>
+<li><p>其内部包含:</p>
+<p>  对类型的声明</p>
+<p>  函数声明</p>
+<p>  内调(inline)函数的定义</p>
+<p>  宏定义</p>
+<p>  全局变量定义(包括<code>extern</code>定义)</p>
+<p>  外部变量的定义</p>
+<p>  还可以包含其他头</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        Share
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://cdog-shen.github.io/2024/02/01/fcc_notes/cpp/%E9%9D%A2%E5%90%91%E8%BF%87%E7%A8%8B%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-CPP/" rel="tag">C&#x2F;CPP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Languages/" rel="tag">Languages</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2024/02/01/fcc_notes/cpp/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            C---类和对象
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2024/02/01/fcc_notes/hacking/%E7%AE%80%E4%BB%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">hacking介绍</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2024
+        <i class="ri-heart-fill heart_icon"></i> Cdog Shen
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="./images/dog.ico" alt="TEST"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/project">项目</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1329665666&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+</body>
+
+</html>
