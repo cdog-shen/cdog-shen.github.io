@@ -14,7 +14,7 @@
       <title> TEST</title>
   <meta name="generator" content="hexo-theme-ayer">
       
-      <link rel="shortcut icon" href="./image/dog.ico" />
+      <link rel="shortcut icon" href="/image/dog.ico" />
        
 <link rel="stylesheet" href="/dist/main.css">
 
@@ -57,7 +57,7 @@
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="./images/cover2.jpg" alt="image frame" />
+      <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">TEST</a></h1>
@@ -67,6 +67,12 @@
         
       </div>
       <div>
+        
+        <img
+          src="/images/dog.svg，如果不要直接设置成false"
+          class="cover-logo"
+          alt="TEST"
+        />
         
       </div>
     </div>
@@ -86,10 +92,10 @@
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['通往牛逼的路上', '风景不近人意', '但我们只在乎远方'],
+        strings: ['通往成功的路', '风景不近人意', '但我们只在乎远方'],
         startDelay: 0,
         typeSpeed: 200,
-        loop: false,
+        loop: true,
         backSpeed: 100,
         showCursor: true
       });
@@ -103,19 +109,11 @@
   
   
   
-
 <div class="notice" style="margin-top:50px">
     <i class="ri-heart-fill"></i>
-    <div class="notice-content" id="broad"></div>
+    <div class="notice-content">海狗的静态blog, 使用hexo-ayer</div>
 </div>
-<script type="text/javascript">
-    fetch('https://v1.hitokoto.cn')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("broad").innerHTML = data.hitokoto;
-        })
-        .catch(console.error)
-</script>
+
 
 <style>
     .notice {
@@ -661,7 +659,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="./images/dog.ico" alt="TEST"></a>
+    <a href="/"><img src="/images/dog.ico" alt="TEST"></a>
   </div>
   
   <ul class="nav nav-main">
